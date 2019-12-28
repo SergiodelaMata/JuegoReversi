@@ -1,0 +1,6 @@
+#lang racket
+(define (get_lista_pos_validas matriz color)
+  (define lista_pos_validas '())
+  (for*/list ([i 8] [i 8])
+    #:when(and (equal? (is_empty matriz  pos) #t) (or (equal? (comprobar_fila matriz color (list i j)) #t) (equal? (comprobar_columna matriz color (list i j)) #t) (equal? (comprobar_diagonales matriz color (list i j)) #t)))
+    

@@ -1,0 +1,52 @@
+#lang racket
+(require rackunit
+         "Reversi.rkt")
+         
+(define TurnoBlancas
+  (list
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   (list "-" "-" "B" "N" "N" "-" "-" "-")
+   (list "-" "-" "-" "N" "N" "-" "-" "-")
+   (list "-" "-" "N" "N" "B" "N" "-" "-")
+   (list "-" "-" "-" "B" "-" "B" "-" "-")
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   ))
+
+(define TurnoNegras
+  (list
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   (list "-" "-" "B" "N" "N" "-" "-" "-")
+   (list "-" "-" "-" "N" "N" "-" "-" "-")
+   (list "-" "B" "B" "B" "B" "N" "-" "-")
+   (list "-" "-" "-" "B" "-" "B" "-" "-")
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   ))
+
+
+
+
+;Prueba unitaria para las posiciones validas para piezas Blancas
+(check-equal? (get_lista_pos_validas TurnoBlancas "B") '((1 3) (1 4) (2 5) (3 1) (3 5) (4 1) (4 6)))
+
+;Prueba unitaria para las posiciones validas para piezas Negras
+(check-equal? (get_lista_pos_validas TurnoNegras "N") '((2 1) (4 0) (5 1) (5 2) (5 4) (6 3) (6 5)))
+
+(check-equal? (contar_piezas TurnoNegras) '(7 5))
+
+;No funciona, da error de numero de argumentos
+(check-equal? (cambiar_color TurnoNegras '(2 2) "N") (list
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   (list "-" "-" "N" "N" "N" "-" "-" "-")
+   (list "-" "-" "-" "N" "N" "-" "-" "-")
+   (list "-" "B" "B" "B" "B" "N" "-" "-")
+   (list "-" "-" "-" "B" "-" "B" "-" "-")
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   (list "-" "-" "-" "-" "-" "-" "-" "-")
+   ))
+
+
